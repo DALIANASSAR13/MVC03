@@ -5,7 +5,7 @@ using StudentManagement.Data;
 
 namespace StudentManagement.Controllers
 {
-    public class StudentController : Controller
+    public class StudentController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly AppDbContext _context;
 

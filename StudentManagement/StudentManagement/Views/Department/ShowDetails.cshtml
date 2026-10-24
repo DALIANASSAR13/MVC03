@@ -1,0 +1,48 @@
+﻿@model StudentManagement.ViewModels.DepartmentDetailsViewModel
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<h1>Department Details</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <p>
+            <strong>Department Name:</strong>
+            @Model.DepartmentName
+        </p>
+
+        <p>
+            <strong>Department State:</strong>
+            @Model.DepartmentState
+        </p>
+
+        <p>
+            <strong>Department ID:</strong>
+            @Model.DepartmentId
+        </p>
+
+        <div class="mb-3">
+            <label for="studentId" class="form-label">
+                Students older than 25 years
+            </label>
+
+            <select id="studentId" name="studentId"
+                    class="form-select">
+                <option value="">Select a student</option>
+
+                @foreach (var student in Model.StudentsOver25)
+                {
+                    <option value="@student.Value">
+                        @student.Text
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+
+<a href="/Department/ShowAll" class="btn btn-secondary">
+    Back to Departments
+</a>

@@ -1,0 +1,48 @@
+﻿@model List<StudentManagement.Models.Department>
+
+@{
+    ViewData["Title"] = "All Departments";
+}
+
+<h1>All Departments</h1>
+
+<p>
+    <a href="/Department/Add" class="btn btn-primary">
+        Add Department
+    </a>
+</p>
+
+@if (Model == null || Model.Count == 0)
+{
+    <p>No departments found.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Manager</th>
+                <th>Students Count</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>@department.Id</td>
+                    <td>@department.Name</td>
+                    <td>@department.MgrName</td>
+                    <td>@(department.Students?.Count ?? 0)</td>
+                    <td>
+                        <a href="/Department/ShowDetails?id=@department.Id">
+                            Show Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
